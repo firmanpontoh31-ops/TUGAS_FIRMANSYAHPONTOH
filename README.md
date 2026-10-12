@@ -200,4 +200,4 @@ Uji ini mencakup pengajuan valid, validasi field, bentrokan jadwal, login & rate
 - **Penyimpanan:** SQLite via modul bawaan `node:sqlite` (aman di Windows, tanpa kompilasi native). Bila perlu beralih ke file JSON, ganti only `db/database.js` — lapisan route tidak berubah.
 - **Desain:** palet biru–putih–abu dengan aksen warna per status, tipografi sistem, responsif (sidebar menjadi menu laci di layar kecil), komponen kartu statistik, tabel, formulir, modal konfirmasi, notifikasi, indikator status, tampilan kosong, dan indikator pemuatan.
 - **Bahasa:** seluruh antarmuka memakai bahasa Indonesia formal dan netral.
-- **Git:** repository dipublikasikan di GitHub: <https://github.com/firmanpontoh31-ops/TUGAS_FIRMANSYAHPONTOHI>. Berkas `.env`, `node_modules/`, dan basis data lokal (`db/lab.db*`) dikecualikan lewat `.gitignore` sehingga tidak ikut terunggah.
+- **Git:** repository dipublikasikan di GitHub: <https://github.com/firmanpontoh31-ops/TUGAS_FIRMANSYAHPONTOH>. Berkas `.env`, `node_modules/`, dan basis data lokal (`db/lab.db*`) dikecualikan lewat `.gitignore` sehingga tidak ikut terunggah.
