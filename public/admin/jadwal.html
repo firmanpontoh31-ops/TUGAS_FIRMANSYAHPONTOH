@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Jadwal Laboratorium — Dashboard Admin</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/admin/css/admin.css">
+</head>
+<body class="admin-body">
+  <aside class="sidebar">
+    <div class="sidebar-kepala">
+      <span class="judul">Peminjaman Lab</span>
+      <span class="sub">Dashboard Admin</span>
+    </div>
+    <nav aria-label="Menu admin">
+      <a href="/admin/index.html"><span class="ikon">📊</span>Ringkasan</a>
+      <a href="/admin/pengajuan.html"><span class="ikon">📝</span>Manajemen Pengajuan</a>
+      <a href="/admin/jadwal.html"><span class="ikon">🗓️</span>Jadwal Laboratorium</a>
+      <a href="/admin/laboratorium.html"><span class="ikon">🖥️</span>Data Laboratorium</a>
+      <a href="/admin/pemohon.html"><span class="ikon">👥</span>Data Pemohon</a>
+      <a href="/admin/laporan.html"><span class="ikon">📈</span>Laporan &amp; Rekap</a>
+      <a href="/admin/pengaturan.html"><span class="ikon">⚙️</span>Ketentuan &amp; Info</a>
+    </nav>
+    <div class="sidebar-kaki">
+      <span class="nama-admin">Admin</span>
+      <a href="#" id="btn-keluar" style="color:#fca5a5">Keluar</a>
+    </div>
+  </aside>
+
+  <div class="admin-utama">
+    <header class="admin-atas">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="tombol-menu" aria-label="Buka menu">☰</button>
+        <h1 id="judul-halaman">Manajemen Jadwal Laboratorium</h1>
+      </div>
+    </header>
+
+    <main class="admin-konten">
+      <section class="panel">
+        <div class="panel-badan" style="padding:16px 20px">
+          <div class="filter-baris" style="margin:0">
+            <div>
+              <label for="f-tanggal">Tanggal</label>
+              <input type="date" id="f-tanggal">
+            </div>
+            <div>
+              <label for="f-lab">Laboratorium</label>
+              <select id="f-lab"><option value="">Semua</option></select>
+            </div>
+            <div style="flex:0"><button class="btn btn-utama" id="btn-tampilkan">Tampilkan</button></div>
+          </div>
+        </div>
+        <div class="panel-badan tabel">
+          <div id="tabel-jadwal" aria-live="polite">
+            <div class="memuat"><div class="spinner"></div>Memuat jadwal…</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-kepala"><h2>Status Operasional Laboratorium</h2></div>
+        <div class="panel-badan tabel">
+          <div id="status-lab"><div class="memuat"><div class="spinner"></div>Memuat…</div></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/admin/js/admin.js"></script>
+  <script src="/admin/js/jadwal-admin.js"></script>
+</body>
+</html>

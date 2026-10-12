@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jadwal dan Ketersediaan Laboratorium</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-logo" aria-hidden="true">L</span>
+        <span class="brand-text">Peminjaman Lab<small>Laboratorium Informatika</small></span>
+      </a>
+      <button class="nav-toggle" aria-label="Buka menu navigasi" aria-expanded="false">☰</button>
+      <nav class="site-nav" aria-label="Navigasi utama">
+        <ul>
+          <li><a href="/">Beranda</a></li>
+          <li><a href="/laboratorium.html">Laboratorium</a></li>
+          <li><a href="/jadwal.html" class="aktif">Jadwal</a></li>
+          <li><a href="/ajukan.html">Ajukan Peminjaman</a></li>
+          <li><a href="/cek-status.html">Cek Status</a></li>
+          <li><a href="/riwayat.html">Riwayat</a></li>
+          <li><a href="/ketentuan.html">Ketentuan</a></li>
+          <li><a href="/kontak.html">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="konten">
+    <div class="kontainer">
+      <div class="halaman-judul">
+        <h1>Jadwal dan Ketersediaan</h1>
+        <p>Lihat jadwal peminjaman laboratorium pada tanggal tertentu. Pengajuan baru tidak dapat dibuat jika bertabrakan dengan peminjaman yang sudah disetujui.</p>
+      </div>
+
+      <div class="filter-baris">
+        <div>
+          <label for="f-tanggal">Tanggal</label>
+          <input type="date" id="f-tanggal">
+        </div>
+        <div>
+          <label for="f-lab">Laboratorium</label>
+          <select id="f-lab"><option value="">Semua laboratorium</option></select>
+        </div>
+        <div>
+          <label for="f-status">Status Ketersediaan</label>
+          <select id="f-status">
+            <option value="">Semua status</option>
+            <option value="menunggu">Menunggu Persetujuan</option>
+            <option value="disetujui">Disetujui</option>
+          </select>
+        </div>
+        <div style="flex:0">
+          <button class="btn btn-utama" id="btn-tampilkan">Tampilkan</button>
+        </div>
+      </div>
+
+      <h2>Ketersediaan Laboratorium</h2>
+      <div id="ketersediaan-lab" class="kartu-grid" style="margin-bottom:28px"></div>
+
+      <h2>Jadwal Peminjaman</h2>
+      <div id="daftar-jadwal" aria-live="polite"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="kontainer">
+      <div class="footer-grid">
+        <div><h4 data-nama-sistem>Sistem Peminjaman Lab</h4><p id="footer-deskripsi"></p></div>
+        <div><h4>Tautan Cepat</h4><p><a href="/ajukan.html">Ajukan Peminjaman</a><br><a href="/jadwal.html">Jadwal</a><br><a href="/cek-status.html">Cek Status</a></p></div>
+        <div><h4>Kontak Pengelola</h4><p id="footer-kontak">Memuat…</p></div>
+      </div>
+      <div class="footer-bawah">© <span id="tahun-berjalan"></span> <span data-nama-sistem>Sistem Peminjaman Lab</span></div>
+    </div>
+  </footer>
+
+  <script src="/js/util.js"></script>
+  <script src="/js/site.js"></script>
+  <script src="/js/jadwal.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Data Laboratorium — Dashboard Admin</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/admin/css/admin.css">
+</head>
+<body class="admin-body">
+  <aside class="sidebar">
+    <div class="sidebar-kepala">
+      <span class="judul">Peminjaman Lab</span>
+      <span class="sub">Dashboard Admin</span>
+    </div>
+    <nav aria-label="Menu admin">
+      <a href="/admin/index.html"><span class="ikon">📊</span>Ringkasan</a>
+      <a href="/admin/pengajuan.html"><span class="ikon">📝</span>Manajemen Pengajuan</a>
+      <a href="/admin/jadwal.html"><span class="ikon">🗓️</span>Jadwal Laboratorium</a>
+      <a href="/admin/laboratorium.html"><span class="ikon">🖥️</span>Data Laboratorium</a>
+      <a href="/admin/pemohon.html"><span class="ikon">👥</span>Data Pemohon</a>
+      <a href="/admin/laporan.html"><span class="ikon">📈</span>Laporan &amp; Rekap</a>
+      <a href="/admin/pengaturan.html"><span class="ikon">⚙️</span>Ketentuan &amp; Info</a>
+    </nav>
+    <div class="sidebar-kaki">
+      <span class="nama-admin">Admin</span>
+      <a href="#" id="btn-keluar" style="color:#fca5a5">Keluar</a>
+    </div>
+  </aside>
+
+  <div class="admin-utama">
+    <header class="admin-atas">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="tombol-menu" aria-label="Buka menu">☰</button>
+        <h1 id="judul-halaman">Manajemen Data Laboratorium</h1>
+      </div>
+      <button class="btn btn-utama" id="btn-tambah">+ Tambah Laboratorium</button>
+    </header>
+
+    <main class="admin-konten">
+      <section class="panel">
+        <div class="panel-badan tabel">
+          <div id="tabel-lab"><div class="memuat"><div class="spinner"></div>Memuat…</div></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-kepala">
+          <h2>Jadwal Pemeliharaan</h2>
+          <button class="btn btn-garis btn-kecil" id="btn-tambah-pemeliharaan">+ Tambah Pemeliharaan</button>
+        </div>
+        <div class="panel-badan tabel">
+          <div id="tabel-pemeliharaan"><div class="memuat"><div class="spinner"></div>Memuat…</div></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal form laboratorium -->
+  <div class="modal-latar" id="modal-lab" role="dialog" aria-modal="true" aria-labelledby="lab-judul">
+    <div class="modal" style="max-width:560px">
+      <h3 id="lab-judul">Tambah Laboratorium</h3>
+      <form id="form-lab" class="formulir">
+        <div>
+          <label for="lab-nama">Nama Laboratorium <span class="wajib">*</span></label>
+          <input type="text" id="lab-nama" maxlength="120" required>
+        </div>
+        <div>
+          <label for="lab-lokasi">Lokasi</label>
+          <input type="text" id="lab-lokasi" maxlength="200">
+        </div>
+        <div class="form-grid">
+          <div>
+            <label for="lab-kapasitas">Kapasitas (orang) <span class="wajib">*</span></label>
+            <input type="number" id="lab-kapasitas" min="1" step="1" required>
+          </div>
+          <div>
+            <label for="lab-status">Status Operasional <span class="wajib">*</span></label>
+            <select id="lab-status">
+              <option value="aktif">Aktif</option>
+              <option value="nonaktif">Tidak Aktif</option>
+              <option value="pemeliharaan">Dalam Pemeliharaan</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="lab-fasilitas">Fasilitas</label>
+          <textarea id="lab-fasilitas" maxlength="500" placeholder="Pisahkan dengan koma"></textarea>
+        </div>
+        <div>
+          <label for="lab-deskripsi">Deskripsi</label>
+          <textarea id="lab-deskripsi" maxlength="500"></textarea>
+        </div>
+        <div class="modal-tombol">
+          <button type="button" class="btn btn-garis" data-tutup="modal-lab">Batal</button>
+          <button type="submit" class="btn btn-utama" id="btn-simpan-lab">Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal pemeliharaan -->
+  <div class="modal-latar" id="modal-pemeliharaan" role="dialog" aria-modal="true" aria-labelledby="pemeliharaan-judul">
+    <div class="modal">
+      <h3 id="pemeliharaan-judul">Tambah Pemeliharaan</h3>
+      <form id="form-pemeliharaan" class="formulir">
+        <div>
+          <label for="pem-lab">Laboratorium <span class="wajib">*</span></label>
+          <select id="pem-lab" required></select>
+        </div>
+        <div class="form-grid">
+          <div>
+            <label for="pem-mulai">Tanggal Mulai <span class="wajib">*</span></label>
+            <input type="date" id="pem-mulai" required>
+          </div>
+          <div>
+            <label for="pem-selesai">Tanggal Selesai <span class="wajib">*</span></label>
+            <input type="date" id="pem-selesai" required>
+          </div>
+        </div>
+        <div>
+          <label for="pem-keterangan">Keterangan</label>
+          <input type="text" id="pem-keterangan" maxlength="200">
+        </div>
+        <div class="modal-tombol">
+          <button type="button" class="btn btn-garis" data-tutup="modal-pemeliharaan">Batal</button>
+          <button type="submit" class="btn btn-utama">Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/admin/js/admin.js"></script>
+  <script src="/admin/js/laboratorium.js"></script>
+</body>
+</html>

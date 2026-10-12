@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Ringkasan — Dashboard Admin</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/admin/css/admin.css">
+</head>
+<body class="admin-body">
+  <aside class="sidebar">
+    <div class="sidebar-kepala">
+      <span class="judul">Peminjaman Lab</span>
+      <span class="sub">Dashboard Admin</span>
+    </div>
+    <nav aria-label="Menu admin">
+      <a href="/admin/index.html"><span class="ikon">📊</span>Ringkasan</a>
+      <a href="/admin/pengajuan.html"><span class="ikon">📝</span>Manajemen Pengajuan</a>
+      <a href="/admin/jadwal.html"><span class="ikon">🗓️</span>Jadwal Laboratorium</a>
+      <a href="/admin/laboratorium.html"><span class="ikon">🖥️</span>Data Laboratorium</a>
+      <a href="/admin/pemohon.html"><span class="ikon">👥</span>Data Pemohon</a>
+      <a href="/admin/laporan.html"><span class="ikon">📈</span>Laporan &amp; Rekap</a>
+      <a href="/admin/pengaturan.html"><span class="ikon">⚙️</span>Ketentuan &amp; Info</a>
+    </nav>
+    <div class="sidebar-kaki">
+      <span class="nama-admin">Admin</span>
+      <a href="#" id="btn-keluar" style="color:#fca5a5">Keluar</a>
+    </div>
+  </aside>
+
+  <div class="admin-utama">
+    <header class="admin-atas">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="tombol-menu" aria-label="Buka menu">☰</button>
+        <h1 id="judul-halaman">Ringkasan</h1>
+      </div>
+    </header>
+
+    <main class="admin-konten">
+      <div class="stat-grid" id="stat-grid">
+        <div class="stat-kartu"><div class="angka">—</div><div class="label">Memuat…</div></div>
+      </div>
+
+      <div class="dua-kolom">
+        <section class="panel">
+          <div class="panel-kepala"><h2>Pengajuan Terbaru</h2></div>
+          <div class="panel-badan" id="daftar-terbaru"><div class="memuat"><div class="spinner"></div>Memuat…</div></div>
+        </section>
+        <section class="panel">
+          <div class="panel-kepala"><h2>Jadwal Terdekat (Disetujui)</h2></div>
+          <div class="panel-badan" id="daftar-terdekat"><div class="memuat"><div class="spinner"></div>Memuat…</div></div>
+        </section>
+      </div>
+    </main>
+
+    <footer style="padding:16px 24px;color:var(--abu-500);font-size:.82rem">© <span id="tahun-berjalan"></span> Sistem Peminjaman Laboratorium Informatika</footer>
+  </div>
+
+  <script src="/admin/js/admin.js"></script>
+  <script>
+    (async () => {
+      const admin = await initAdmin('Ringkasan');
+      if (!admin) return;
+
+      const { data } = await apiAdmin('/api/admin/ringkasan');
+      if (!data.success) { notifikasi(data.pesan || 'Gagal memuat ringkasan.', 'error'); return; }
+
+      const s = data.statistik;
+      const kartu = [
+        ['stat-', s.total, 'Total Pengajuan', ''],
+        ['stat-menunggu', s.menunggu, 'Menunggu Persetujuan', ''],
+        ['stat-disetujui', s.disetujui, 'Disetujui', ''],
+        ['stat-ditolak', s.ditolak, 'Ditolak', ''],
+        ['stat-selesai', s.selesai, 'Selesai', ''],
+        ['stat-lab', s.laboratorium_aktif, 'Laboratorium Aktif', ''],
+      ];
+      document.getElementById('stat-grid').innerHTML = kartu.map(([cls, angka, label]) =>
+        `<div class="stat-kartu ${cls}"><div class="angka">${angka}</div><div class="label">${label}</div></div>`).join('');
+
+      const terbaru = document.getElementById('daftar-terbaru');
+      if (!data.pengajuan_terbaru.length) tampilkanKosong(terbaru, 'Belum ada pengajuan.', '📝');
+      else terbaru.innerHTML = data.pengajuan_terbaru.map((p) => `
+        <div class="ringkas-baris">
+          <div>
+            <strong>${esc(p.nomor_pengajuan)}</strong><br>
+            <span style="color:var(--abu-500);font-size:.84rem">${esc(p.pemohon)} · ${esc(p.laboratorium)}<br>${tanggalIndo(p.tanggal)} ${esc(p.jam_mulai)}–${esc(p.jam_selesai)}</span>
+          </div>
+          <div>${badgeStatus(p.status, p.label_status)}</div>
+        </div>`).join('');
+
+      const terdekat = document.getElementById('daftar-terdekat');
+      if (!data.jadwal_terdekat.length) tampilkanKosong(terdekat, 'Belum ada jadwal disetujui mendatang.', '🗓️');
+      else terdekat.innerHTML = data.jadwal_terdekat.map((p) => `
+        <div class="ringkas-baris">
+          <div>
+            <strong>${esc(p.laboratorium)}</strong><br>
+            <span style="color:var(--abu-500);font-size:.84rem">${tanggalIndo(p.tanggal)} · ${esc(p.jam_mulai)}–${esc(p.jam_selesai)}<br>${esc(p.pemohon)}</span>
+          </div>
+          <div>${badgeStatus(p.status, p.label_status)}</div>
+        </div>`).join('');
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Ketentuan dan Informasi — Dashboard Admin</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/admin/css/admin.css">
+</head>
+<body class="admin-body">
+  <aside class="sidebar">
+    <div class="sidebar-kepala">
+      <span class="judul">Peminjaman Lab</span>
+      <span class="sub">Dashboard Admin</span>
+    </div>
+    <nav aria-label="Menu admin">
+      <a href="/admin/index.html"><span class="ikon">📊</span>Ringkasan</a>
+      <a href="/admin/pengajuan.html"><span class="ikon">📝</span>Manajemen Pengajuan</a>
+      <a href="/admin/jadwal.html"><span class="ikon">🗓️</span>Jadwal Laboratorium</a>
+      <a href="/admin/laboratorium.html"><span class="ikon">🖥️</span>Data Laboratorium</a>
+      <a href="/admin/pemohon.html"><span class="ikon">👥</span>Data Pemohon</a>
+      <a href="/admin/laporan.html"><span class="ikon">📈</span>Laporan &amp; Rekap</a>
+      <a href="/admin/pengaturan.html"><span class="ikon">⚙️</span>Ketentuan &amp; Info</a>
+    </nav>
+    <div class="sidebar-kaki">
+      <span class="nama-admin">Admin</span>
+      <a href="#" id="btn-keluar" style="color:#fca5a5">Keluar</a>
+    </div>
+  </aside>
+
+  <div class="admin-utama">
+    <header class="admin-atas">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="tombol-menu" aria-label="Buka menu">☰</button>
+        <h1 id="judul-halaman">Ketentuan dan Informasi</h1>
+      </div>
+    </header>
+
+    <main class="admin-konten">
+      <p class="peringatan">Perubahan yang disimpan akan langsung tampil pada halaman pengguna (Ketentuan, Kontak, dan Beranda).</p>
+
+      <form id="form-pengaturan">
+        <section class="panel">
+          <div class="panel-kepala"><h2>Informasi Sistem</h2></div>
+          <div class="panel-badan">
+            <div class="form-grid">
+              <div class="lebar">
+                <label for="sistem_nama">Nama Sistem</label>
+                <input type="text" id="sistem_nama" maxlength="150">
+              </div>
+              <div class="lebar">
+                <label for="sistem_deskripsi">Deskripsi Singkat</label>
+                <textarea id="sistem_deskripsi" maxlength="400"></textarea>
+              </div>
+              <div class="lebar">
+                <label for="sistem_institusi">Nama Institusi</label>
+                <input type="text" id="sistem_institusi" maxlength="150">
+                <p class="hint">Biarkan kosong bila tidak ingin ditampilkan. Gunakan data resmi, bukan contoh.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-kepala"><h2>Jam Layanan Peminjaman</h2></div>
+          <div class="panel-badan">
+            <div class="form-grid">
+              <div>
+                <label for="jam_mulai">Jam Mulai</label>
+                <input type="time" id="jam_mulai">
+              </div>
+              <div>
+                <label for="jam_selesai">Jam Selesai</label>
+                <input type="time" id="jam_selesai">
+              </div>
+            </div>
+            <p class="hint">Pengajuan di luar rentang jam layanan akan ditolak oleh server.</p>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-kepala"><h2>Prosedur Pengajuan</h2></div>
+          <div class="panel-badan">
+            <textarea id="ketentuan_prosedur" maxlength="3000" rows="6"></textarea>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-kepala"><h2>Ketentuan Umum</h2></div>
+          <div class="panel-badan">
+            <textarea id="ketentuan_umum" maxlength="3000" rows="6"></textarea>
+            <div class="checkbox-baris" style="margin-top:14px">
+              <input type="checkbox" id="boleh_batalkan_disetujui">
+              <label for="boleh_batalkan_disetujui" style="font-weight:400;margin:0">Izinkan pemohon membatalkan pengajuan yang sudah disetujui melalui halaman riwayat.</label>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-kepala"><h2>Aturan Penggunaan Laboratorium</h2></div>
+          <div class="panel-badan">
+            <textarea id="ketentuan_aturan" maxlength="3000" rows="7"></textarea>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-kepala"><h2>Kontak Pengelola</h2></div>
+          <div class="panel-badan">
+            <p class="hint" style="margin-top:0">Jangan mengarang kontak resmi. Ganti seluruh nilai contoh dengan data resmi pengelola laboratorium.</p>
+            <div class="form-grid">
+              <div>
+                <label for="kontak_nama">Nama Pengelola</label>
+                <input type="text" id="kontak_nama" maxlength="120">
+              </div>
+              <div>
+                <label for="kontak_jabatan">Jabatan</label>
+                <input type="text" id="kontak_jabatan" maxlength="120">
+              </div>
+              <div>
+                <label for="kontak_whatsapp">Nomor WhatsApp</label>
+                <input type="text" id="kontak_whatsapp" maxlength="25">
+                <p class="hint">Format internasional tanpa spasi, contoh: 6281234567890.</p>
+              </div>
+              <div>
+                <label for="kontak_email">Email</label>
+                <input type="email" id="kontak_email" maxlength="120">
+              </div>
+              <div class="lebar">
+                <label for="kontak_alamat">Alamat</label>
+                <input type="text" id="kontak_alamat" maxlength="250">
+              </div>
+              <div class="lebar">
+                <label for="kontak_jam_layanan">Keterangan Jam Layanan</label>
+                <input type="text" id="kontak_jam_layanan" maxlength="120">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div style="position:sticky;bottom:16px;display:flex;justify-content:flex-end">
+          <button type="submit" class="btn btn-utama" id="btn-simpan">Simpan Semua Perubahan</button>
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <script src="/admin/js/admin.js"></script>
+  <script src="/admin/js/pengaturan.js"></script>
+</body>
+</html>

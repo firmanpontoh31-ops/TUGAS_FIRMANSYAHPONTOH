@@ -1,0 +1,108 @@
+/* ============================================================
+   Gaya dashboard admin — Sistem Peminjaman Lab Informatika
+   Menggunakan variabel dari style.css + tata letak sidebar.
+   ============================================================ */
+
+body.admin-body { display: flex; min-height: 100vh; background: var(--abu-100); }
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  width: 248px; flex-shrink: 0; background: var(--abu-900); color: var(--abu-300);
+  display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh;
+}
+.sidebar-kepala { padding: 18px 18px 14px; border-bottom: 1px solid var(--abu-700); }
+.sidebar-kepala .judul { color: #fff; font-weight: 700; font-size: .98rem; display: block; }
+.sidebar-kepala .sub { color: var(--abu-500); font-size: .76rem; }
+.sidebar nav { flex: 1; padding: 12px 10px; overflow-y: auto; }
+.sidebar nav a {
+  display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px;
+  color: var(--abu-300); text-decoration: none; font-size: .92rem; margin-bottom: 2px;
+}
+.sidebar nav a:hover { background: var(--abu-700); color: #fff; }
+.sidebar nav a.aktif { background: var(--biru-700); color: #fff; font-weight: 600; }
+.sidebar nav a .ikon { width: 20px; text-align: center; }
+.sidebar-kaki { padding: 14px 18px; border-top: 1px solid var(--abu-700); font-size: .84rem; }
+.sidebar-kaki .nama-admin { color: #fff; font-weight: 600; display: block; margin-bottom: 8px; word-break: break-word; }
+
+/* ---------- Area konten ---------- */
+.admin-utama { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.admin-atas {
+  background: var(--putih); border-bottom: 1px solid var(--abu-100);
+  padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  position: sticky; top: 0; z-index: 40;
+}
+.admin-atas h1 { font-size: 1.15rem; margin: 0; }
+.tombol-menu { display: none; background: var(--putih); border: 1px solid var(--abu-300); border-radius: 8px; padding: 8px 12px; font-size: 1.1rem; cursor: pointer; }
+.admin-konten { padding: 24px; flex: 1; }
+
+/* ---------- Kartu statistik ---------- */
+.stat-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); margin-bottom: 24px; }
+.stat-kartu {
+  background: var(--putih); border: 1px solid var(--abu-100); border-radius: var(--radius);
+  padding: 16px 18px; box-shadow: var(--bayang); border-left: 4px solid var(--biru-600);
+}
+.stat-kartu .angka { font-size: 1.9rem; font-weight: 800; color: var(--abu-900); line-height: 1.1; }
+.stat-kartu .label { color: var(--abu-500); font-size: .85rem; font-weight: 600; }
+.stat-menunggu { border-left-color: #d97706; }
+.stat-disetujui { border-left-color: #16a34a; }
+.stat-ditolak { border-left-color: #dc2626; }
+.stat-selesai { border-left-color: #2563eb; }
+.stat-lab { border-left-color: #7c3aed; }
+
+/* ---------- Panel / bagian ---------- */
+.panel { background: var(--putih); border: 1px solid var(--abu-100); border-radius: var(--radius); box-shadow: var(--bayang); margin-bottom: 24px; }
+.panel-kepala { padding: 16px 20px; border-bottom: 1px solid var(--abu-100); display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.panel-kepala h2 { margin: 0; font-size: 1.05rem; }
+.panel-badan { padding: 20px; }
+.panel-badan.tabel { padding: 0; }
+
+/* ---------- Aksi baris tabel ---------- */
+.baris-aksi { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* ---------- Form admin ---------- */
+.form-grid { display: grid; gap: 16px; grid-template-columns: 1fr 1fr; }
+.form-grid .lebar { grid-column: 1 / -1; }
+@media (max-width: 720px) { .form-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Dua kolom ---------- */
+.dua-kolom { display: grid; gap: 24px; grid-template-columns: 1fr 1fr; align-items: start; }
+@media (max-width: 980px) { .dua-kolom { grid-template-columns: 1fr; } }
+
+/* ---------- Lencana ringkas ---------- */
+.ringkas-baris { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px dashed var(--abu-100); font-size: .92rem; }
+.ringkas-baris:last-child { border-bottom: none; }
+
+/* ---------- Halaman login ---------- */
+.login-body {
+  min-height: 100vh; display: grid; place-items: center; padding: 20px;
+  background: linear-gradient(135deg, var(--biru-900), var(--biru-700));
+}
+.login-kartu { background: var(--putih); border-radius: 14px; padding: 32px; width: 100%; max-width: 400px; box-shadow: var(--bayang-besar); }
+.login-kartu h1 { font-size: 1.3rem; text-align: center; }
+.login-kartu .sub { text-align: center; color: var(--abu-500); font-size: .9rem; margin-bottom: 22px; }
+.login-tombol { width: 100%; }
+
+/* ---------- Laporan bar ---------- */
+.bar-laporan { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: .88rem; }
+.bar-laporan .nama { width: 190px; color: var(--abu-700); flex-shrink: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bar-laporan .batang { flex: 1; background: var(--abu-100); border-radius: 999px; height: 12px; overflow: hidden; }
+.bar-laporan .isi { height: 100%; background: var(--biru-600); border-radius: 999px; }
+.bar-laporan .nilai { width: 48px; text-align: right; font-weight: 700; color: var(--abu-900); }
+
+/* ---------- Responsif sidebar ---------- */
+@media (max-width: 900px) {
+  .sidebar {
+    position: fixed; left: 0; top: 0; z-index: 100; height: 100vh;
+    transform: translateX(-100%); transition: transform .2s ease;
+  }
+  .sidebar.terbuka { transform: none; box-shadow: 0 0 0 100vmax rgba(0,0,0,.4); }
+  .tombol-menu { display: block; }
+  .admin-konten { padding: 16px; }
+  .stat-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+}
+
+/* Detail baris */
+.detail-dl-admin { display: grid; grid-template-columns: 160px 1fr; gap: 6px 14px; margin: 0; }
+.detail-dl-admin dt { color: var(--abu-500); font-weight: 600; }
+.detail-dl-admin dd { margin: 0; }
+@media (max-width: 600px) { .detail-dl-admin { grid-template-columns: 1fr; } }

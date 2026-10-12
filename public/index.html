@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sistem Informasi Peminjaman Laboratorium Informatika — pengajuan, jadwal, dan persetujuan peminjaman laboratorium secara daring.">
+  <title>Beranda</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-logo" aria-hidden="true">L</span>
+        <span class="brand-text">Peminjaman Lab<small>Laboratorium Informatika</small></span>
+      </a>
+      <button class="nav-toggle" aria-label="Buka menu navigasi" aria-expanded="false">☰</button>
+      <nav class="site-nav" aria-label="Navigasi utama">
+        <ul>
+          <li><a href="/" class="aktif">Beranda</a></li>
+          <li><a href="/laboratorium.html">Laboratorium</a></li>
+          <li><a href="/jadwal.html">Jadwal</a></li>
+          <li><a href="/ajukan.html">Ajukan Peminjaman</a></li>
+          <li><a href="/cek-status.html">Cek Status</a></li>
+          <li><a href="/riwayat.html">Riwayat</a></li>
+          <li><a href="/ketentuan.html">Ketentuan</a></li>
+          <li><a href="/kontak.html">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="kontainer">
+      <span class="institusi" id="institusi"></span>
+      <h1>Sistem Informasi Peminjaman Laboratorium Informatika</h1>
+      <p>Layanan digital untuk mengajukan, mengecek jadwal, dan memantau status peminjaman laboratorium informatika — dari pengajuan hingga persetujuan.</p>
+      <div class="hero-aksi">
+        <a class="btn btn-terang" href="/ajukan.html">Ajukan Peminjaman</a>
+        <a class="btn btn-garis" href="/jadwal.html" style="color:#fff;border-color:rgba(255,255,255,.6)">Lihat Jadwal</a>
+        <a class="btn btn-garis" href="/cek-status.html" style="color:#fff;border-color:rgba(255,255,255,.6)">Cek Status</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="konten">
+    <div class="kontainer">
+      <section style="padding:40px 0 8px">
+        <h2>Tentang Sistem</h2>
+        <p id="deskripsi-sistem">Memuat informasi…</p>
+      </section>
+
+      <section style="padding:24px 0">
+        <h2>Layanan Peminjaman</h2>
+        <div class="kartu-grid">
+          <a class="kartu kartu-aksi" href="/laboratorium.html">
+            <span class="ikon" aria-hidden="true">🖥️</span>
+            <h3>Informasi Laboratorium</h3>
+            <p>Daftar laboratorium beserta lokasi, kapasitas, fasilitas, dan status ketersediaan.</p>
+          </a>
+          <a class="kartu kartu-aksi" href="/jadwal.html">
+            <span class="ikon" aria-hidden="true">🗓️</span>
+            <h3>Jadwal &amp; Ketersediaan</h3>
+            <p>Periksa jadwal peminjaman per tanggal untuk memastikan waktu yang Anda inginkan tersedia.</p>
+          </a>
+          <a class="kartu kartu-aksi" href="/ajukan.html">
+            <span class="ikon" aria-hidden="true">📝</span>
+            <h3>Pengajuan Peminjaman</h3>
+            <p>Isi formulir pengajuan peminjaman laboratorium dan terima nomor pengajuan Anda.</p>
+          </a>
+          <a class="kartu kartu-aksi" href="/cek-status.html">
+            <span class="ikon" aria-hidden="true">🔍</span>
+            <h3>Cek Status Pengajuan</h3>
+            <p>Pantau status pengajuan menggunakan nomor pengajuan dan identitas Anda.</p>
+          </a>
+        </div>
+      </section>
+
+      <section style="padding:24px 0">
+        <h2>Proses Singkat</h2>
+        <div class="kartu-grid">
+          <div class="kartu"><span class="ikon" aria-hidden="true">1️⃣</span><h3>Periksa Jadwal</h3><p>Pastikan laboratorium dan waktu yang diinginkan tersedia.</p></div>
+          <div class="kartu"><span class="ikon" aria-hidden="true">2️⃣</span><h3>Ajukan Peminjaman</h3><p>Isi formulir dengan data yang benar dan lengkap.</p></div>
+          <div class="kartu"><span class="ikon" aria-hidden="true">3️⃣</span><h3>Tunggu Persetujuan</h3><p>Admin memeriksa dan menyetujui atau menolak pengajuan.</p></div>
+          <div class="kartu"><span class="ikon" aria-hidden="true">4️⃣</span><h3>Gunakan Laboratorium</h3><p>Gunakan laboratorium sesuai tanggal dan waktu yang disetujui.</p></div>
+        </div>
+      </section>
+
+      <section style="padding:24px 0 8px">
+        <div class="peringatan">
+          <strong>Catatan:</strong> Data laboratorium, kontak, dan jadwal pada sistem ini merupakan data contoh (<span class="label-contoh">CONTOH</span>) untuk keperluan demonstrasi dan dapat diubah melalui dashboard admin. Pengajuan baru dianggap disetujui hanya setelah admin memberikan persetujuan.
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="kontainer">
+      <div class="footer-grid">
+        <div>
+          <h4 data-nama-sistem>Sistem Peminjaman Lab</h4>
+          <p id="footer-deskripsi"></p>
+        </div>
+        <div>
+          <h4>Tautan Cepat</h4>
+          <p><a href="/ajukan.html">Ajukan Peminjaman</a><br><a href="/jadwal.html">Jadwal</a><br><a href="/cek-status.html">Cek Status</a></p>
+        </div>
+        <div>
+          <h4>Kontak Pengelola</h4>
+          <p id="footer-kontak">Memuat…</p>
+        </div>
+      </div>
+      <div class="footer-bawah">
+        <span id="footer-institusi"></span> · © <span id="tahun-berjalan"></span> <span data-nama-sistem>Sistem Peminjaman Lab</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/util.js"></script>
+  <script src="/js/site.js"></script>
+  <script>
+    document.addEventListener('sistem:siap', (e) => {
+      const s = e.detail.sistem || {};
+      const d = document.getElementById('deskripsi-sistem');
+      if (d && s.deskripsi) d.textContent = s.deskripsi;
+      const i = document.getElementById('institusi');
+      if (i) { if (s.institusi) { i.textContent = s.institusi; } else { i.style.display = 'none'; } }
+    });
+  </script>
+</body>
+</html>

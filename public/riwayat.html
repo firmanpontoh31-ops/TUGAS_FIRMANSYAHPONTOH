@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riwayat Peminjaman</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-logo" aria-hidden="true">L</span>
+        <span class="brand-text">Peminjaman Lab<small>Laboratorium Informatika</small></span>
+      </a>
+      <button class="nav-toggle" aria-label="Buka menu navigasi" aria-expanded="false">☰</button>
+      <nav class="site-nav" aria-label="Navigasi utama">
+        <ul>
+          <li><a href="/">Beranda</a></li>
+          <li><a href="/laboratorium.html">Laboratorium</a></li>
+          <li><a href="/jadwal.html">Jadwal</a></li>
+          <li><a href="/ajukan.html">Ajukan Peminjaman</a></li>
+          <li><a href="/cek-status.html">Cek Status</a></li>
+          <li><a href="/riwayat.html" class="aktif">Riwayat</a></li>
+          <li><a href="/ketentuan.html">Ketentuan</a></li>
+          <li><a href="/kontak.html">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="konten">
+    <div class="kontainer">
+      <div class="halaman-judul">
+        <h1>Riwayat Peminjaman</h1>
+        <p>Masukkan NIM Anda untuk melihat seluruh pengajuan yang pernah diajukan. Riwayat hanya dapat diakses dengan identitas yang benar, bukan sekadar menebak nomor pengajuan.</p>
+      </div>
+
+      <div class="bungkus-kartu" style="margin-bottom:24px">
+        <form id="form-riwayat" class="formulir">
+          <div class="baris-form">
+            <div>
+              <label for="nim">NIM / Nomor Identitas <span class="wajib">*</span></label>
+              <input type="text" id="nim" required>
+            </div>
+            <div style="display:flex;align-items:flex-end">
+              <button type="submit" class="btn btn-utama" id="btn-riwayat">Tampilkan Riwayat</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div id="hasil-riwayat" aria-live="polite"></div>
+    </div>
+  </main>
+
+  <!-- Modal konfirmasi pembatalan -->
+  <div class="modal-latar" id="modal-batal" role="dialog" aria-modal="true" aria-labelledby="modal-batal-judul">
+    <div class="modal modal-kecil">
+      <h3 id="modal-batal-judul">Batalkan Pengajuan?</h3>
+      <p>Pengajuan <strong id="batal-nomor"></strong> akan dibatalkan dan tidak dapat digunakan kembali. Tindakan ini tidak dapat dibatalkan.</p>
+      <div class="modal-tombol">
+        <button class="btn btn-garis" data-tutup="modal-batal">Kembali</button>
+        <button class="btn btn-bahaya" id="btn-konfirmasi-batal">Ya, Batalkan</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="kontainer">
+      <div class="footer-grid">
+        <div><h4 data-nama-sistem>Sistem Peminjaman Lab</h4><p id="footer-deskripsi"></p></div>
+        <div><h4>Tautan Cepat</h4><p><a href="/ajukan.html">Ajukan Peminjaman</a><br><a href="/jadwal.html">Jadwal</a><br><a href="/cek-status.html">Cek Status</a></p></div>
+        <div><h4>Kontak Pengelola</h4><p id="footer-kontak">Memuat…</p></div>
+      </div>
+      <div class="footer-bawah">© <span id="tahun-berjalan"></span> <span data-nama-sistem>Sistem Peminjaman Lab</span></div>
+    </div>
+  </footer>
+
+  <script src="/js/util.js"></script>
+  <script src="/js/site.js"></script>
+  <script src="/js/riwayat.js"></script>
+</body>
+</html>

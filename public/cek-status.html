@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pemeriksaan Status Peminjaman</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-logo" aria-hidden="true">L</span>
+        <span class="brand-text">Peminjaman Lab<small>Laboratorium Informatika</small></span>
+      </a>
+      <button class="nav-toggle" aria-label="Buka menu navigasi" aria-expanded="false">☰</button>
+      <nav class="site-nav" aria-label="Navigasi utama">
+        <ul>
+          <li><a href="/">Beranda</a></li>
+          <li><a href="/laboratorium.html">Laboratorium</a></li>
+          <li><a href="/jadwal.html">Jadwal</a></li>
+          <li><a href="/ajukan.html">Ajukan Peminjaman</a></li>
+          <li><a href="/cek-status.html" class="aktif">Cek Status</a></li>
+          <li><a href="/riwayat.html">Riwayat</a></li>
+          <li><a href="/ketentuan.html">Ketentuan</a></li>
+          <li><a href="/kontak.html">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="konten">
+    <div class="kontainer lebar-penuh">
+      <div class="halaman-judul">
+        <h1>Pemeriksaan Status Peminjaman</h1>
+        <p>Masukkan nomor pengajuan dan NIM Anda untuk melihat status pengajuan. Kedua data diperlukan agar informasi hanya dapat diakses oleh pemohon yang berhak.</p>
+      </div>
+
+      <div class="bungkus-kartu" style="margin-bottom:24px">
+        <form id="form-cek" class="formulir">
+          <div class="baris-form">
+            <div>
+              <label for="nomor_pengajuan">Nomor Pengajuan <span class="wajib">*</span></label>
+              <input type="text" id="nomor_pengajuan" placeholder="PIN-YYYYMMDD-XXXX" required>
+            </div>
+            <div>
+              <label for="nim">NIM / Nomor Identitas <span class="wajib">*</span></label>
+              <input type="text" id="nim" required>
+            </div>
+          </div>
+          <div><button type="submit" class="btn btn-utama" id="btn-cek">Periksa Status</button></div>
+        </form>
+      </div>
+
+      <div id="hasil-cek" aria-live="polite"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="kontainer">
+      <div class="footer-grid">
+        <div><h4 data-nama-sistem>Sistem Peminjaman Lab</h4><p id="footer-deskripsi"></p></div>
+        <div><h4>Tautan Cepat</h4><p><a href="/ajukan.html">Ajukan Peminjaman</a><br><a href="/jadwal.html">Jadwal</a><br><a href="/cek-status.html">Cek Status</a></p></div>
+        <div><h4>Kontak Pengelola</h4><p id="footer-kontak">Memuat…</p></div>
+      </div>
+      <div class="footer-bawah">© <span id="tahun-berjalan"></span> <span data-nama-sistem>Sistem Peminjaman Lab</span></div>
+    </div>
+  </footer>
+
+  <script src="/js/util.js"></script>
+  <script src="/js/site.js"></script>
+  <script src="/js/cek-status.js"></script>
+</body>
+</html>

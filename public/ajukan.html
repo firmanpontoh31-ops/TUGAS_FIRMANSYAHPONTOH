@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengajuan Peminjaman Laboratorium</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-logo" aria-hidden="true">L</span>
+        <span class="brand-text">Peminjaman Lab<small>Laboratorium Informatika</small></span>
+      </a>
+      <button class="nav-toggle" aria-label="Buka menu navigasi" aria-expanded="false">☰</button>
+      <nav class="site-nav" aria-label="Navigasi utama">
+        <ul>
+          <li><a href="/">Beranda</a></li>
+          <li><a href="/laboratorium.html">Laboratorium</a></li>
+          <li><a href="/jadwal.html">Jadwal</a></li>
+          <li><a href="/ajukan.html" class="aktif">Ajukan Peminjaman</a></li>
+          <li><a href="/cek-status.html">Cek Status</a></li>
+          <li><a href="/riwayat.html">Riwayat</a></li>
+          <li><a href="/ketentuan.html">Ketentuan</a></li>
+          <li><a href="/kontak.html">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="konten">
+    <div class="kontainer lebar-penuh">
+      <div class="halaman-judul">
+        <h1>Formulir Pengajuan Peminjaman</h1>
+        <p>Isi data berikut dengan benar. Pengajuan yang berhasil dikirim akan berstatus <strong>Menunggu Persetujuan</strong> dan diproses oleh admin laboratorium.</p>
+      </div>
+
+      <div class="bungkus-kartu">
+        <div id="kesalahan" class="kesalahan-form" style="display:none" role="alert"></div>
+
+        <form id="form-ajukan" class="formulir" novalidate>
+          <div class="baris-form">
+            <div>
+              <label for="nama">Nama Lengkap <span class="wajib">*</span></label>
+              <input type="text" id="nama" name="nama" maxlength="100" autocomplete="name" required>
+            </div>
+            <div>
+              <label for="nim">NIM / Nomor Identitas <span class="wajib">*</span></label>
+              <input type="text" id="nim" name="nim" maxlength="25" autocomplete="off" required>
+              <p class="hint">Contoh: 1301220001</p>
+            </div>
+          </div>
+
+          <div class="baris-form">
+            <div>
+              <label for="program_studi">Program Studi / Kelas <span class="wajib">*</span></label>
+              <input type="text" id="program_studi" name="program_studi" maxlength="80" required>
+            </div>
+            <div>
+              <label for="whatsapp">Nomor WhatsApp <span class="wajib">*</span></label>
+              <input type="tel" id="whatsapp" name="whatsapp" maxlength="18" autocomplete="tel" required>
+              <p class="hint">Aktif agar admin dapat menghubungi Anda.</p>
+            </div>
+          </div>
+
+          <div>
+            <label for="laboratorium_id">Laboratorium <span class="wajib">*</span></label>
+            <select id="laboratorium_id" name="laboratorium_id" required>
+              <option value="">— Pilih laboratorium —</option>
+            </select>
+            <p class="hint" id="hint-lab">Laboratorium yang tidak aktif atau dalam pemeliharaan tidak dapat dipilih.</p>
+          </div>
+
+          <div>
+            <label for="tanggal">Tanggal Peminjaman <span class="wajib">*</span></label>
+            <input type="date" id="tanggal" name="tanggal" required>
+          </div>
+
+          <div class="baris-form">
+            <div>
+              <label for="jam_mulai">Waktu Mulai <span class="wajib">*</span></label>
+              <input type="time" id="jam_mulai" name="jam_mulai" required>
+            </div>
+            <div>
+              <label for="jam_selesai">Waktu Selesai <span class="wajib">*</span></label>
+              <input type="time" id="jam_selesai" name="jam_selesai" required>
+            </div>
+          </div>
+          <p class="hint" id="hint-jam">Jam layanan akan dimuat…</p>
+
+          <div class="baris-form">
+            <div>
+              <label for="tujuan">Tujuan Peminjaman <span class="wajib">*</span></label>
+              <input type="text" id="tujuan" name="tujuan" maxlength="200" required>
+            </div>
+            <div>
+              <label for="jumlah_peserta">Jumlah Peserta <span class="wajib">*</span></label>
+              <input type="number" id="jumlah_peserta" name="jumlah_peserta" min="1" step="1" required>
+            </div>
+          </div>
+
+          <div>
+            <label for="catatan">Catatan Tambahan</label>
+            <textarea id="catatan" name="catatan" maxlength="500" placeholder="Opsional: kebutuhan khusus, perangkat lunak, dll."></textarea>
+          </div>
+
+          <div class="checkbox-baris">
+            <input type="checkbox" id="persetujuan_data" name="persetujuan_data" required>
+            <label for="persetujuan_data" style="font-weight:400;margin:0">Saya menyetujui bahwa data yang saya isi digunakan untuk keperluan administrasi dan pemrosesan peminjaman laboratorium. <span class="wajib">*</span></label>
+          </div>
+
+          <div>
+            <button type="submit" class="btn btn-utama" id="btn-kirim">Kirim Pengajuan</button>
+            <a class="btn btn-garis" href="/jadwal.html" style="margin-left:8px">Periksa Jadwal</a>
+          </div>
+        </form>
+
+        <div id="hasil-sukses" style="display:none">
+          <div class="nomor-sukses">
+            <p style="margin:0 0 6px;font-weight:600">Pengajuan peminjaman berhasil dikirim.</p>
+            <p style="margin:0 0 4px;font-size:.9rem;color:var(--abu-700)">Simpan nomor pengajuan berikut untuk memeriksa status:</p>
+            <p class="nomor" id="nomor-hasil">—</p>
+            <p style="margin:8px 0 0"><span class="badge badge-menunggu">Menunggu Persetujuan</span></p>
+            <p style="margin:14px 0 0;font-size:.9rem">
+              <a class="btn btn-utama btn-kecil" href="/cek-status.html">Cek Status</a>
+              <button class="btn btn-garis btn-kecil" id="btn-ajukan-lagi" type="button">Ajukan Lagi</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="kontainer">
+      <div class="footer-grid">
+        <div><h4 data-nama-sistem>Sistem Peminjaman Lab</h4><p id="footer-deskripsi"></p></div>
+        <div><h4>Tautan Cepat</h4><p><a href="/ajukan.html">Ajukan Peminjaman</a><br><a href="/jadwal.html">Jadwal</a><br><a href="/cek-status.html">Cek Status</a></p></div>
+        <div><h4>Kontak Pengelola</h4><p id="footer-kontak">Memuat…</p></div>
+      </div>
+      <div class="footer-bawah">© <span id="tahun-berjalan"></span> <span data-nama-sistem>Sistem Peminjaman Lab</span></div>
+    </div>
+  </footer>
+
+  <script src="/js/util.js"></script>
+  <script src="/js/site.js"></script>
+  <script src="/js/ajukan.js"></script>
+</body>
+</html>

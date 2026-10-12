@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Manajemen Pengajuan — Dashboard Admin</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/admin/css/admin.css">
+</head>
+<body class="admin-body">
+  <aside class="sidebar">
+    <div class="sidebar-kepala">
+      <span class="judul">Peminjaman Lab</span>
+      <span class="sub">Dashboard Admin</span>
+    </div>
+    <nav aria-label="Menu admin">
+      <a href="/admin/index.html"><span class="ikon">📊</span>Ringkasan</a>
+      <a href="/admin/pengajuan.html"><span class="ikon">📝</span>Manajemen Pengajuan</a>
+      <a href="/admin/jadwal.html"><span class="ikon">🗓️</span>Jadwal Laboratorium</a>
+      <a href="/admin/laboratorium.html"><span class="ikon">🖥️</span>Data Laboratorium</a>
+      <a href="/admin/pemohon.html"><span class="ikon">👥</span>Data Pemohon</a>
+      <a href="/admin/laporan.html"><span class="ikon">📈</span>Laporan &amp; Rekap</a>
+      <a href="/admin/pengaturan.html"><span class="ikon">⚙️</span>Ketentuan &amp; Info</a>
+    </nav>
+    <div class="sidebar-kaki">
+      <span class="nama-admin">Admin</span>
+      <a href="#" id="btn-keluar" style="color:#fca5a5">Keluar</a>
+    </div>
+  </aside>
+
+  <div class="admin-utama">
+    <header class="admin-atas">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="tombol-menu" aria-label="Buka menu">☰</button>
+        <h1 id="judul-halaman">Manajemen Pengajuan Peminjaman</h1>
+      </div>
+    </header>
+
+    <main class="admin-konten">
+      <section class="panel">
+        <div class="panel-badan" style="padding:16px 20px">
+          <div class="filter-baris" style="margin:0">
+            <div style="flex:2">
+              <label for="f-q">Pencarian</label>
+              <input type="search" id="f-q" placeholder="Nama, nomor pengajuan, NIM, atau tujuan…">
+            </div>
+            <div>
+              <label for="f-status">Status</label>
+              <select id="f-status">
+                <option value="">Semua status</option>
+                <option value="menunggu">Menunggu Persetujuan</option>
+                <option value="disetujui">Disetujui</option>
+                <option value="ditolak">Ditolak</option>
+                <option value="dibatalkan">Dibatalkan</option>
+                <option value="selesai">Selesai</option>
+              </select>
+            </div>
+            <div>
+              <label for="f-lab">Laboratorium</label>
+              <select id="f-lab"><option value="">Semua</option></select>
+            </div>
+            <div>
+              <label for="f-tanggal">Tanggal</label>
+              <input type="date" id="f-tanggal">
+            </div>
+            <div style="flex:0"><button class="btn btn-garis" id="btn-reset">Atur Ulang</button></div>
+          </div>
+        </div>
+        <div class="panel-badan tabel">
+          <div id="tabel-pengajuan" aria-live="polite">
+            <div class="memuat"><div class="spinner"></div>Memuat pengajuan…</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal detail -->
+  <div class="modal-latar" id="modal-detail" role="dialog" aria-modal="true" aria-labelledby="detail-judul">
+    <div class="modal" style="max-width:640px">
+      <h3 id="detail-judul">Detail Pengajuan</h3>
+      <div id="isi-detail"><div class="memuat"><div class="spinner"></div>Memuat…</div></div>
+      <div class="modal-tombol"><button class="btn btn-garis" data-tutup="modal-detail">Tutup</button></div>
+    </div>
+  </div>
+
+  <!-- Modal aksi status -->
+  <div class="modal-latar" id="modal-aksi" role="dialog" aria-modal="true" aria-labelledby="aksi-judul">
+    <div class="modal">
+      <h3 id="aksi-judul">Ubah Status</h3>
+      <p id="aksi-info" style="color:var(--abu-500)"></p>
+      <div id="bungkus-alasan" style="display:none;margin-top:12px">
+        <label for="input-alasan">Alasan <span class="wajib">*</span></label>
+        <textarea id="input-alasan" maxlength="500" placeholder="Wajib diisi saat menolak pengajuan."></textarea>
+      </div>
+      <div class="modal-tombol">
+        <button class="btn btn-garis" data-tutup="modal-aksi">Batal</button>
+        <button class="btn btn-utama" id="btn-simpan-aksi">Simpan</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/admin/js/admin.js"></script>
+  <script src="/admin/js/pengajuan.js"></script>
+</body>
+</html>

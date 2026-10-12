@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informasi Kontak Pengelola</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-logo" aria-hidden="true">L</span>
+        <span class="brand-text">Peminjaman Lab<small>Laboratorium Informatika</small></span>
+      </a>
+      <button class="nav-toggle" aria-label="Buka menu navigasi" aria-expanded="false">☰</button>
+      <nav class="site-nav" aria-label="Navigasi utama">
+        <ul>
+          <li><a href="/">Beranda</a></li>
+          <li><a href="/laboratorium.html">Laboratorium</a></li>
+          <li><a href="/jadwal.html">Jadwal</a></li>
+          <li><a href="/ajukan.html">Ajukan Peminjaman</a></li>
+          <li><a href="/cek-status.html">Cek Status</a></li>
+          <li><a href="/riwayat.html">Riwayat</a></li>
+          <li><a href="/ketentuan.html">Ketentuan</a></li>
+          <li><a href="/kontak.html" class="aktif">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="konten">
+    <div class="kontainer lebar-penuh">
+      <div class="halaman-judul">
+        <h1>Informasi Kontak Pengelola</h1>
+        <p>Hubungi pengelola laboratorium untuk pertanyaan, perubahan jadwal, atau kendala peminjaman.</p>
+      </div>
+
+      <div class="bungkus-kartu">
+        <div id="isi-kontak">
+          <div class="memuat"><div class="spinner"></div>Memuat informasi kontak…</div>
+        </div>
+      </div>
+
+      <div class="peringatan" style="margin-top:18px">
+        Nomor kontak, email, dan alamat di atas adalah data contoh (<span class="label-contoh">CONTOH</span>) dan bukan kontak resmi. Ganti dengan data resmi melalui dashboard admin.
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="kontainer">
+      <div class="footer-grid">
+        <div><h4 data-nama-sistem>Sistem Peminjaman Lab</h4><p id="footer-deskripsi"></p></div>
+        <div><h4>Tautan Cepat</h4><p><a href="/ajukan.html">Ajukan Peminjaman</a><br><a href="/jadwal.html">Jadwal</a><br><a href="/cek-status.html">Cek Status</a></p></div>
+        <div><h4>Kontak Pengelola</h4><p id="footer-kontak">Memuat…</p></div>
+      </div>
+      <div class="footer-bawah">© <span id="tahun-berjalan"></span> <span data-nama-sistem>Sistem Peminjaman Lab</span></div>
+    </div>
+  </footer>
+
+  <script src="/js/util.js"></script>
+  <script src="/js/site.js"></script>
+  <script src="/js/kontak.js"></script>
+</body>
+</html>

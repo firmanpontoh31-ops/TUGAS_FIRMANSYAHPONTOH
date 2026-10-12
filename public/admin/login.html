@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Masuk Admin — Peminjaman Lab Informatika</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/admin/css/admin.css">
+</head>
+<body class="login-body">
+  <div class="login-kartu">
+    <h1>Dashboard Admin</h1>
+    <p class="sub">Sistem Informasi Peminjaman Laboratorium Informatika</p>
+
+    <div id="kesalahan" class="kesalahan-form" style="display:none;margin-bottom:16px" role="alert"></div>
+
+    <form id="form-login" class="formulir">
+      <div>
+        <label for="username">Nama Pengguna <span class="wajib">*</span></label>
+        <input type="text" id="username" autocomplete="username" required>
+      </div>
+      <div>
+        <label for="password">Kata Sandi <span class="wajib">*</span></label>
+        <input type="password" id="password" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="btn btn-utama login-tombol" id="btn-masuk">Masuk</button>
+    </form>
+
+    <p style="text-align:center;margin:20px 0 0;font-size:.86rem">
+      <a href="/">← Kembali ke halaman pengguna</a>
+    </p>
+  </div>
+
+  <script src="/js/util.js"></script>
+  <script>
+    // Jika sudah sesi, langsung ke dasbor.
+    fetch('/api/auth/me').then((r) => { if (r.ok) window.location.href = '/admin/index.html'; }).catch(() => {});
+
+    document.getElementById('form-login').addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      const box = document.getElementById('kesalahan');
+      box.style.display = 'none';
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      if (!username || !password) {
+        box.style.display = 'block';
+        box.textContent = 'Nama pengguna dan kata sandi wajib diisi.';
+        return;
+      }
+      const tombol = document.getElementById('btn-masuk');
+      tombol.disabled = true; tombol.textContent = 'Memeriksa…';
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.success) {
+          window.location.href = '/admin/index.html';
+        } else {
+          box.style.display = 'block';
+          box.textContent = data.pesan || 'Gagal masuk. Periksa kembali kredensial Anda.';
+          document.getElementById('password').value = '';
+        }
+      } catch {
+        box.style.display = 'block';
+        box.textContent = 'Terjadi kesalahan jaringan. Coba lagi.';
+      } finally {
+        tombol.disabled = false; tombol.textContent = 'Masuk';
+      }
+    });
+  </script>
+</body>
+</html>
